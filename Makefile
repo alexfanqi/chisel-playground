@@ -1,6 +1,5 @@
-BUILD_DIR = ./build
-
-PRJ = playground
+PRJ ?= lab3
+BUILD_DIR = ./rtl/$(PRJ)
 
 test:
 	mill -i $(PRJ).test
@@ -30,8 +29,8 @@ clean:
 
 .PHONY: test verilog help reformat checkformat clean
 
-sim:
-	$(call git_commit, "sim RTL") # DO NOT REMOVE THIS LINE!!!
-	@echo "Write this Makefile by yourself."
+sim: verilog $(BUILD_DIR)
+	verilator --trace --timing --assert --vpi -I$(BASE)/vsrc -MMD --prefix Vtop
+
 
 -include ../Makefile
