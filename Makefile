@@ -1,13 +1,13 @@
 PRJ ?= lab3
-BUILD_DIR = ./rtl/$(PRJ)
+BUILD_DIR = ./rtl/generated/$(PRJ)
+NVBOARD_HOME ?=
 
 test:
 	mill -i $(PRJ).test
 
 verilog:
 	$(call git_commit, "generate verilog")
-	mkdir -p $(BUILD_DIR)
-	mill -i $(PRJ).runMain Elaborate --target-dir $(BUILD_DIR)
+	mill -i $(PRJ).elaborate
 
 help:
 	mill -i $(PRJ).runMain Elaborate --help

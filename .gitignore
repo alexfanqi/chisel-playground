@@ -1,6 +1,7 @@
 *.*
 *
 !*/
+.*/
 !Makefile
 !*.mk
 !*.scala
@@ -12,6 +13,7 @@
 !.scalafmt.conf
 !build.sc
 !README.md
+!cmake/*.cmake
 build/
 
 # mill
